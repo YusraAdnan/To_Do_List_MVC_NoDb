@@ -1,0 +1,53 @@
+﻿@model List<To_Do_List_MVC_NoDb.Models.TaskItem>
+@{
+    ViewData["Title"] = "Home Page - To-Do List";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">My Task Tracker</h2>
+
+    <!-- Access the temp data if its not null -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form asp-action="AddTask" method="post" class="d-flex">
+        <input type="text" name="title" class="form-control me-2" placeholder="Enter a new task..." />
+        <button type="submit" class="btn btn-success"><i class="bi bi-clipboard-plus-fill"></i></button>
+    </form>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-secondary mt-2" role="alert">
+            Nothing to display here.
+        </div>
+    }
+    else
+    {
+    <div class="card p-2 mt-3">
+        <!-- https://getbootstrap.com/docs/5.3/components/list-group/ -->
+        <ol class="list-group list-group-numbered mt-3">
+            @foreach (var task in Model)
+            {
+                <li class="list-group-item d-flex align-items-center">
+                    
+                    <span class="ms-2">@task.Title</span>
+
+                    <div class="ms-auto d-flex align-items-center gap-2">
+                        @if (!task.IsComplete)
+                        {
+                            <a asp-action="ToggleComplete" asp-route-id="@task.Id" class="btn btn-outline-success">[Mark Complete]</a>
+                        }
+                        else
+                        {
+                            <span style="color:forestgreen">(Done)</span>
+                        }
+                        <a asp-action="DeleteTask" asp-route-id="@task.Id" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+                   </div>
+                </li>
+            }
+    </ol>
+    </div>
+    }
+</div>
