@@ -22,6 +22,8 @@ namespace To_Do_List_MVC_NoDb.Controllers
             return View(tasks);
         }
 
+        /*Action methods allows us to return different results (return Views, Redirect, etc) adding flexibility to controller methods
+        represents what the controller sends back to the browser */
         [HttpPost]
         public IActionResult AddTask(string title)
         {
