@@ -9,7 +9,7 @@ namespace To_Do_List_MVC_NoDb.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-       private static List<TaskItem> tasks = new List<TaskItem>();
+        private static List<TaskItem> tasks = new List<TaskItem>();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -28,7 +28,10 @@ namespace To_Do_List_MVC_NoDb.Controllers
             var task = new TaskItem { Id= Guid.NewGuid(), Title = title, IsComplete = false };
             tasks.Add(task);
 
+            //TempData is a way of storing data for one request/redirect
             TempData["Success"] = "Task added successfully!";
+
+            //reloads the task list now including the new task we do redirect to action when we dont want a new view to open
             return RedirectToAction("Index");
         }
         // Toggle complete
