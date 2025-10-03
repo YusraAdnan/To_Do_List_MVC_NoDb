@@ -31,8 +31,11 @@ namespace To_Do_List_MVC_NoDb.Controllers
             _dbContext.TaskItems.Add(task);
             _dbContext.SaveChanges();
 
-            //TempData is a way of storing data for one request/redirect
-            TempData["Success"] = "Task added successfully!";
+            if (TempData != null)
+            {
+                //TempData is a way of storing data for one request/redirect
+                TempData["Success"] = "Task added successfully!";
+            }
 
             //reloads the task list now including the new task we do redirect to action when we dont want a new view to open
             return RedirectToAction("Index");
@@ -59,7 +62,10 @@ namespace To_Do_List_MVC_NoDb.Controllers
                 _dbContext.TaskItems.Remove(task);
                 _dbContext.SaveChanges();
 
-                TempData["Success"] = "Task deleted successfully!";
+                if (TempData != null)
+                {
+                    TempData["Success"] = "Task deleted successfully!";
+                }
             }
             return RedirectToAction("Index");
         }

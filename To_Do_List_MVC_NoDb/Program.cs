@@ -12,7 +12,7 @@ namespace To_Do_List_MVC_NoDb
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ToDoDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("ToDo_Db")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("LeaveManagementDb")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

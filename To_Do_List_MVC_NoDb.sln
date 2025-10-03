@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "To_Do_List_MVC_NoDb", "To_Do_List_MVC_NoDb\To_Do_List_MVC_NoDb.csproj", "{EB1015B0-B87A-4553-BE35-7E868ED6CBCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoMVC_Tests", "ToDoMVC_Tests\ToDoMVC_Tests.csproj", "{DE7C4845-C128-46C6-9B10-A7B73AC09968}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EB1015B0-B87A-4553-BE35-7E868ED6CBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB1015B0-B87A-4553-BE35-7E868ED6CBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB1015B0-B87A-4553-BE35-7E868ED6CBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE7C4845-C128-46C6-9B10-A7B73AC09968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE7C4845-C128-46C6-9B10-A7B73AC09968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE7C4845-C128-46C6-9B10-A7B73AC09968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE7C4845-C128-46C6-9B10-A7B73AC09968}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
