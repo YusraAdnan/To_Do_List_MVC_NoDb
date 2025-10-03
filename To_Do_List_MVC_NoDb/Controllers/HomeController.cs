@@ -7,18 +7,18 @@ namespace To_Do_List_MVC_NoDb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        private static List<TaskItem> tasks = new List<TaskItem>();
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ToDoDbContext _dbContext;
+        public HomeController(ToDoDbContext dbContext)
         {
-            _logger = logger;
+            _dbContext = dbContext;
         }
 
         //Show all the tasks
         public IActionResult Index()
         {
             //Make the connected view return the tasks list
+            var tasks = _dbContext.TaskItems.ToList();
+
             return View(tasks);
         }
 
@@ -28,7 +28,8 @@ namespace To_Do_List_MVC_NoDb.Controllers
         public IActionResult AddTask(string title)
         {
             var task = new TaskItem { Id= Guid.NewGuid(), Title = title, IsComplete = false };
-            tasks.Add(task);
+            _dbContext.TaskItems.Add(task);
+            _dbContext.SaveChanges();
 
             //TempData is a way of storing data for one request/redirect
             TempData["Success"] = "Task added successfully!";
@@ -39,10 +40,12 @@ namespace To_Do_List_MVC_NoDb.Controllers
         // Toggle complete
         public IActionResult ToggleComplete(Guid id)
         {
-            var task = tasks.FirstOrDefault(t => t.Id == id);
+            var task = _dbContext.TaskItems.FirstOrDefault(t => t.Id == id);
             if (task != null)
             {
                 task.IsComplete = true;
+                _dbContext.SaveChanges();
+
             }
             return RedirectToAction("Index");
         }
@@ -50,10 +53,12 @@ namespace To_Do_List_MVC_NoDb.Controllers
         // Delete task
         public IActionResult DeleteTask(Guid id)
         {
-            var task = tasks.FirstOrDefault(t => t.Id == id);
+            var task = _dbContext.TaskItems.FirstOrDefault(t => t.Id == id);
             if (task != null)
             {
-                tasks.Remove(task);
+                _dbContext.TaskItems.Remove(task);
+                _dbContext.SaveChanges();
+
                 TempData["Success"] = "Task deleted successfully!";
             }
             return RedirectToAction("Index");

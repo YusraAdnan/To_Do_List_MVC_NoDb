@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using To_Do_List_MVC_NoDb.Models;
+
 namespace To_Do_List_MVC_NoDb
 {
     public class Program
@@ -8,7 +11,8 @@ namespace To_Do_List_MVC_NoDb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<ToDoDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("ToDo_Db")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
