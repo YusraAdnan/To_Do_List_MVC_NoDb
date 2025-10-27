@@ -1,0 +1,12 @@
+CREATE DATABASE ToDo_Db3;
+
+
+USE ToDo_Db3;
+
+
+CREATE TABLE dbo.TaskItem
+(
+    Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,   
+    Title NVARCHAR(255) NOT NULL,               
+    IsComplete BIT NOT NULL DEFAULT(0)         
+);
