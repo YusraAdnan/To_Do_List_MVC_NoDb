@@ -20,7 +20,7 @@ namespace To_Do_List_MVC_NoDb.Controllers
             return Json(tasks); //Returns json NOT HTML 
         }
 
-        // GET: api/tasks/{id}  -> get a single task by id
+        // GET: api/tasks/{id}   (get a single task by id)
         [HttpGet("api/tasks/{id}")]
         public IActionResult GetTask(Guid id)
         {
@@ -33,7 +33,7 @@ namespace To_Do_List_MVC_NoDb.Controllers
             return Json(task);
         }
 
-        // POST: api/tasks  -> create a new task
+        // POST: api/tasks (create a new task)
         [HttpPost("api/tasks")]
         public IActionResult AddTaskAPI([FromBody] TaskItem newTask)
         {
